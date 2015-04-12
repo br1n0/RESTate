@@ -1,0 +1,8 @@
+{
+    "url": "http://localhost/restate/test/?cmd='columns",
+	"descrizione":"cmd con un comando inesistente, che contiene apostrofo per giunta",
+    "result": null,
+	"httpStatusCode":400
+
+
+}

@@ -1,0 +1,5 @@
+#!/bin/sh
+#run all tests
+
+find ./ -type f -iname "test*.json" -exec php ./test.php {} \;|less
+#find ./ -type f -iname "test*.json" 

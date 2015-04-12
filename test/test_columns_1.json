@@ -1,0 +1,11 @@
+{
+    "url": "http://localhost/restate/test/?cmd=columns",
+	"descrizione":"columns: ritorna la struttura della tabella test",
+    "result": [     
+		"id",
+		"iTest",
+		"sTest",
+		"dTest"
+	]
+
+}

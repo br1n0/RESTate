@@ -1,0 +1,10 @@
+{
+    "url": "http://localhost/restate/test/?cmd=getOne&id=1",
+	"descrizione":"getOne(1)",
+    "result": {
+        "id": 1,
+        "iTest": 1,
+        "sTest": "marco",
+        "dTest": "testo"
+    }
+}

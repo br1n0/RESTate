@@ -1,0 +1,126 @@
+Rest schema:
+i dati in output sono restituiti tramite json,
+i dati in input sono codificati nella url nella get,  o nella body come si fa con i form
+
+Mapping del modello CRUD su http
+Create  http.put,    per creare una nuova risorsa
+Read    http.get,    per leggere dati, queste chiamate lasciano inalterati i dati
+Update  http.post,    per aggiornare i dati
+Delete  http.delete, per cancellare una risorsa
+
+
+
+===GET count===============================
+attenzione non sufficentemente testato, questo metodo non funziona con i filtri!!!
+ritorna il numero degeli elementi
+get http://localhost/restate/discipline/?cmd=count
+
+con curl in linea di cmando dovremmo scrivere
+curl -X GET http://localhost/restate/anagrafica/?cmd=count
+
+la get e' l'unica chiamata che si puo utilizzare scrivendo nel broser i parametri sulla url
+http://localhost/restate/anagrafica/?cmd=count
+
+
+
+==GET columns===================
+permette di conoscere i campi restituiti
+http://localhost/restate/socio/?cmd=columns
+
+
+
+==GET getOne================
+quando serve un solo record di cui si conosce l'id
+
+get http://localhost/restate/anagrafica/?cmd=getOne&rowid=1
+ritorna il record di anagrafica con id=1
+
+get http://localhost/restate/tesseramento/?cmd=getOne&id=1
+ritorna il record di tesseramento con id=1
+
+
+
+===GET getALL===============
+
+get http://localhost/restate/anagrafica/
+ritorna tutti i record della risorsa anagrafica,
+codificate in json, come un array di dizionari.
+
+
+---orderBy---------------
+parametro opzionale orderBy=<INTERO>
+permette di ordinare i dati dal piu piccolo al piu grande quando INTERO e' un numero positivo, se negativo ordina dal piu grande al piu piccoli i dati utilizzando i campi alla posizione corrispondente
+
+get http://localhost/restate/anagrafica/?orderBy=-2
+ordina in base ai campi restituiti in seconda posizione, in questo esempio sono:id,nome,cognome
+in ordine per nome decrescente
+
+questa ordina le discipline in base al id in ordine decrescente
+http://localhost/restate/discipline/?orderBy=-1
+
+
+---limit + page--------------------
+limit definisce il numero massimo di risultati per pagina, mentre page permette di ottenere una data pagina
+page parte da 0 (0 based)
+
+per avere SOLO i primi due elementi
+get http://localhost/restate/anagrafica/?limit=2
+
+per avere la prima pagina, con massimo due record per pagina
+get http://localhost/restate/discipline/?limit=2&page=0 
+
+per avere la prima pagina, con massimo due record per pagina
+http://localhost/restate/discipline/?limit=2&page=1
+
+per avere la terza pagina, con massimo due record per pagina
+http://localhost/restate/discipline/?limit=2&page=2
+
+
+----filter-----------------------
+il parametro filter permette di filtrare i record restituiti, si puo filtrare su qualsiasi campo restituito,
+
+restituisce i record di anagrafica che nel campo nascitaComune contiene k, come le parole tokio,osaka,kyoto,tak
+http://localhost/restate/anagrafica/?filter[nascitaComune]=k
+
+filtra i record di anagrafica che nel campo sesso contengono "m"
+http://localhost/restate/anagrafica/?filter[sesso]=m
+
+si possono cercare anche su piu campi contemporaneamente, 
+da anagrafica cerchiamo i maschi che sono nati in un comune che contiene *to*
+http://localhost/restate/anagrafica/?filter[sesso]=m&filter[nascitaComune]=to
+
+anche si pup combinare filter on order (anche con page e limit)
+http://localhost/restate/anagrafica/?filter[nascitaComune]=to&cognome=ze&orderBy=3
+
+
+
+==GET autocomplete=================
+questo metodo non e' sufficentemente testato
+per implementare autocompletamento,restituisce un arrai di dizionari,id->attributo
+i cui elementi iniziano con la stringa indicata
+
+da discipline: le parole che iniziano con "ma" nella colonna "disciplinaNome"
+get http://localhost/restate/discipline/?cmd=autocomplete&word=ma&column=disciplinaNome
+
+come la precedente, ma limitando i risultati a 2
+get http://localhost/restate/discipline/?cmd=autocomplete&word=ma&column=disciplinaNome&limit=2
+
+
+
+===DELETE =====================
+cancella l'elemento con l'id fornito
+curl -X DELETE -d id=1  http://localhost/restate/anagrafica/
+
+
+===PUT =====================
+crea dei nuovi dati
+questo crea una nuova disciplina
+curl -X PUT -d "disciplinaNome=bastonate" http://localhost/restate/disciplina/
+
+
+===POST =====================
+aggiorna i dati
+consente l'aggiornamento parziale dei dati, 
+si puo modificare da un campo a tutto il record in una singola chiamata
+curl -X POST -d "id=1&nome=bu" http://localhost/restate/anagrafica/
+

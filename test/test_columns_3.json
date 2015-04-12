@@ -1,0 +1,11 @@
+{
+    "url": "http://localhost/restate/test/?cmd=colUmns",
+	"descrizione":"cmd con un comando case insensitive",
+    "result": [     
+		"id",
+		"iTest",
+		"sTest",
+		"dTest"
+	]
+
+}

@@ -1,0 +1,6 @@
+{
+    "url": "http://localhost/restate/test/?cmd=count",
+	"descrizione":"count, counta i record",
+    "result":
+		7
+}

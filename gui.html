@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>RESTate</title>
+<link rel="stylesheet" type="text/css" href="../table.css">
+
+<!-- 
+//RESTate a Mini framework for implement RESTFul statless APIs. 
+//Written by Bruno Trombi. 
+//Released under the terms of the MIT license
+
+ -->
+
+<!-- 
+<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+-->
+<script src= "../angular.min-1.2.26.js"></script>
+<script src="../jquery.min.js"></script>
+<script src= "../filtraArray.js"></script>
+
+
+</head>
+
+<body ng-app="app" ng-controller="customersController  as person">
+
+<div id="myQuestion" /></div>
+
+<h3>
+	RESTate <button class="" id="" onclick="tableDrop();">tableDrop</button>
+</h3>
+
+<a target="_blank" href='./?cmd=columns'> raw colonne </a>
+<br><a target="_blank" href='./?cmd=getAll' > raw data </a>
+<br>
+<hr>
+
+
+
+<input type="text" ng-model="cercaSuTutti" placeholder="cerca su tutti i campi">
+
+	<table>
+
+		<tr>
+			<th ng:repeat="(i,sColumnName) in recordHeads" class="{{sort[i]}}" ng:click="changeOrder(i)">
+				{{sColumnName}}
+			</th>
+		</tr>
+
+
+
+		<tr>
+			<th ng:repeat="(i,sColumnName) in recordHeads">
+				<input type="text" ng-model="cercaColonna[i]" placeholder="" size=9>
+			</th>
+		</tr>
+
+		<tr ng-repeat="aRecord in records|filtraArray:cercaColonna|filter:cercaSuTutti|orderBy:person.aSorting"> 
+			<td ng:repeat="(j,sColumnName) in recordHeads" id="record-j{{j}}-k{{aRecord[0]}}:{{aRecord[j]}}" ng-click="editCell(aRecord[0],j);">
+				{{ aRecord[j] }}
+			</td>
+		</tr>
+
+
+	</table>
+
+
+
+<hr>
+
+
+<select 
+ng-model="selectedItem" 
+ng-options="item as item.0 for item in records|filtraArray:cercaColonna|filter:cercaSuTutti|orderBy:person.aSorting"></select>
+
+
+<button class="" id="" ng-click="remove(selectedItem.0);">remove record</button>
+{{selectedItem | json}}
+<hr>
+
+<button  ng-click="actionBoxInsertOpen();">insert new record</button>
+
+
+<p><tt id="results"></tt></p>
+
+
+<div class=box  ng-show="bBoxInsertOpen">
+	<h4>insert a new record</h4>
+	<form>
+	<table>
+		<tr ng:repeat="(i,th) in recordHeads">
+			<td>{{th}}</td>
+			<td>
+				<input type="text" id="n-{{th}}" name="{{th}}" size=7 value=""/>
+			</td> 
+		</tr>
+	</table>
+
+	<button  ng-click="actionBoxInsertClose();">cancel</button>
+	<button  onclick="showValues();">apply</button>
+	</form>
+</div>
+
+
+
+<script src='../jquery.restate.js'></script>
+<script src= "../angular.app.js"></script>
+</body>
+</html>

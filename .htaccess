@@ -1,0 +1,7 @@
+
+# prevent loading of hidden files from outside
+<Files ~ "^\.">
+  Order allow,deny
+  Deny from all
+</Files>
+

@@ -1,0 +1,14 @@
+
+---------
+spostare il parametro table fuori dall'ogetto Model
+
+attacare la column delete
+attacare la column create
+attacare la column move
+
+indicare in quale tabella si lavora
+
+unificare le gui, prevenendo inutili reload
+------
+
+

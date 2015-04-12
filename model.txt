@@ -1,0 +1,101 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+
+
+CREATE TABLE test
+(
+id INTEGER null PRIMARY KEY AUTOINCREMENT,
+iTest int NOT NULL,
+sTest text NOT NULL,
+dTest NOT NULL
+);
+INSERT INTO "test" VALUES(1,1,'marco','testo');
+INSERT INTO "test" VALUES(2,'a','marco','testo');
+INSERT INTO "test" VALUES(3,9,'pippo','pluto');
+INSERT INTO "test" VALUES(4,4,'daglas','adams');
+INSERT INTO "test" VALUES(5,6,'isaac','asimov');
+INSERT INTO "test" VALUES(6,7,'konrad','ppp');
+INSERT INTO "test" VALUES(7,7,'fabio','volo');
+
+
+-- ci dice chi ha prenotato la stanza in tale giorno
+CREATE TABLE availability
+(
+idRoom INTEGER null PRIMARY KEY AUTOINCREMENT,
+bookedBy bool NOT NULL,
+date unique NOT NULL,
+price not null
+);
+
+INSERT INTO "availability" (bookedBy,date,price) VALUES(1,'2015-12-30',70);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-29',90);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-28',80);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(1,'2015-12-27',75);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(1,'2015-12-26',75);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-25',190);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-24',40);
+
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-23',90);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-22',80);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-21',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-20',4);
+
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-19',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-18',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-17',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-16',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-15',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-14',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-13',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-12',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-11',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-10',60);
+
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-09',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-08',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-07',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-06',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-05',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-04',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-03',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-02',60);
+INSERT INTO "availability" (bookedBy,date,price) VALUES(0,'2015-12-01',60);
+
+
+
+INSERT INTO "maestro" VALUES(1,1,1);
+INSERT INTO "maestro" VALUES(2,1,2);
+INSERT INTO "maestro" VALUES(3,2,1);
+INSERT INTO "maestro" VALUES(4,7,4);
+
+INSERT INTO "sqlite_sequence" VALUES('test',7);
+
+
+
+CREATE TABLE anagrafica
+(
+id INTEGER null PRIMARY KEY AUTOINCREMENT,
+nome           TEXT    NOT NULL,
+cognome           TEXT    NOT NULL,
+sesso             TEXT    NULL,
+nascitaData       TEXT    NULL,
+cf          TEXTNULL,
+
+residenzaComune  NULL,
+residenzaindirizzo  TEXT NULL,
+residenzaCap      TEXT NULL,
+nascitaComune     TEXT NULL,
+
+email          TEXTNULL,
+telefono          TEXTNULL,
+cellulare          TEXTNULL,
+
+idMadre           INTEGERNULL,
+idPadre           INTEGERNULL
+);
+
+INSERT INTO "sqlite_sequence" VALUES('anagrafica',17);
+
+
+
+COMMIT;

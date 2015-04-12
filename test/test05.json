@@ -1,0 +1,6 @@
+{
+    "url": "http://localhost/restate/test/?cmd=autocomplete&column=sTest&word='m&limit=10",
+	"descrizione":"cmd=autocomplete word='m ovvero con apostrofo, e deve ritornare errore interno, per provare a catturare anche i bug del codice" ,
+    "result": null,
+	"httpStatusCode":500
+}

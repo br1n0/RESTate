@@ -1,0 +1,1 @@
+../.allowed.get.php

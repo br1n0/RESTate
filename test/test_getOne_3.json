@@ -1,0 +1,6 @@
+{
+    "url": "http://localhost/restate/test/?cmd=getOne&rowid=a",
+	"descrizione":"getOne con rowid con roid uguale ad una stringa (errore) perche numero negativo, percui ritorna 400",
+    "result": null,
+	"httpStatusCode":400
+}

@@ -1,0 +1,7 @@
+{
+    "url": "http://localhost/restate/test/?cmd=autocomplete&column=sTest&word=m&limit=10",
+	"descrizione":"autocomplete testiamo un pa",
+    "result": [
+        "marco"
+    ]
+}

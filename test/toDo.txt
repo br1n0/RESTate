@@ -1,0 +1,25 @@
+utilizzare:
+
+JSON_UNESCAPED_SLASHES
+
+!spostare 
+da cmd=getOne&rowid=1
+ a cmd=getOne&id=1
+
+!l'autocmplete faalisce il test, perche ritorna anche l'sql eseguito!
+
+
+!le altre funzioni non sono collegate nel restate corrente!!!
+paginazione
+sort
+ecc
+
+estendere il test ad insert,update,delete
+
+
+!bug: l'url della get non include i parametri passati!
+
+sql escaping !injecton
+!http://localhost/restateCurrent/test/?cmd=autocomplete&column=sTest&word=%27a&limit=10
+
+
