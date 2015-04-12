@@ -840,7 +840,14 @@ return "21";
 
 
 
-
+//dummy per scoprire le tablle 
+function tableTables( $input=array() )
+{
+//return $this->exec( ".tables" );
+$tables= `echo .tables |sqlite3 .model.sqlite3`;
+$tables= explode("  ",trim($tables));
+return $tables;
+}
 
 
 

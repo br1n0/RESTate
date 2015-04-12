@@ -32,6 +32,11 @@ function get( $db ,$table ,$input )
 		if( $cmd == 'columns' )
 			return $db->tableDescribe( $table  );
 
+
+		if( $cmd == 'tables' )
+			return $db->tableTables( $table  );
+
+
 		//?cmd=count
 		if( $cmd == 'count' )
 			return $db->tableGetCount( $table ,$input );
