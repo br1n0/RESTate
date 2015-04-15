@@ -21,6 +21,12 @@ foreach( $dirs as $nameDir )
 }
 
 
+$fn= "model.png";
+if( file_exists( $fn ) )
+	$img= "<img alt='model' src='$fn'>";
+else
+	$img='';
+
 echo "<!DOCTYPE html>
 <html>
 <head><title>RESTate</title>
@@ -44,6 +50,8 @@ The REST architectural style describes six constraints. These constraints, appli
 
 $content
 </table>
+
+$img
 
 <hr>
 <input type='text' size=20 id='tabellaNome' value='dummyTable' />
