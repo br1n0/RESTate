@@ -2,11 +2,21 @@
 
 
 ///ispired by http://php.net/manual/en/function.is-numeric.php#107326
+//try to convert value to number if it's rapresented in string in the same manner.
+//this not happen for number that lead or end for zero like 01234 or 789.1000
 function get_numeric($val) {
-  if (is_numeric($val)) {
-    return $val + 0;
-  }
-  return $val;
+
+	if( is_numeric( $val ) )
+	{
+		//if $val seem numeric, is it converted into number: $added. 	
+		$added= $val + 0;
+
+		//if $added has same amount of chars the of $val, we return numerical version
+		if( strlen( strval( $val ) ) == strlen( strval( $added ) ) )
+			return $added;
+	}
+
+	return $val;
 } 
 
 
