@@ -46,16 +46,6 @@ function get( $db ,$table ,$input )
 			return $db->tableAutocomplete( $table ,$input );
 
 
-
-		if( $cmd == strtolower('availability') ){
-//			print_r( $input );
-			$from= strtolower( @$input['from'] );
-			$till= strtolower( @$input['till'] );
-//			return 69;
-			return $db->getAvabilityBetween( $from ,$till );
-		}
-			
-
 		//if( $cmd == strtolower('getAllArray') )
 		//	return $db->tableGetAll( $table ,$input ,true ) ;
 

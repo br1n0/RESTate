@@ -68,7 +68,7 @@ var iPosRow= $scope.trova(  iId );
 //$scope.records[iPosRow][iColumn]= 99;
 //myQuestion();
 
-function myQuestion( question="Please enter your name",value="Harry Potter") {
+function myQuestion( question,value) {
     var newValue = prompt(question,value );
     
     if (newValue != null) {
